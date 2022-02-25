@@ -21,11 +21,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apiInterface=ApiUtilities.getInstance().create(ApiInterface::class.java)
-        val jokesRepository=JokesRepository(apiInterface)
+       val repository=(application as MyApplication).jokesRepository
 
 
-       jokesViewModel= ViewModelProvider(this,JokesViewModelFactory(jokesRepository))[JokesViewModel::class.java]
+       jokesViewModel= ViewModelProvider(this,JokesViewModelFactory(repository))[JokesViewModel::class.java]
         jokesViewModel.jokes.observe(this) {
             Log.d("Main", it.toString())
         }

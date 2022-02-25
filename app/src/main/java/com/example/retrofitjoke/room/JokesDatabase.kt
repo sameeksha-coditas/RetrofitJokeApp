@@ -9,6 +9,8 @@ import com.example.retrofitjoke.model.MyJoke
 @Database(entities = [MyJoke::class], version = 1)
 abstract class JokesDatabase:RoomDatabase() {
 
+    abstract fun jokesDao():RoomDao
+
     companion object{
         private var INSTANCE:JokesDatabase?=null
 
