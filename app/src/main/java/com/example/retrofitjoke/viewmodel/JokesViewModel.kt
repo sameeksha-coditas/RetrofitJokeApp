@@ -18,6 +18,9 @@ class JokesViewModel(private val jokesRepository: JokesRepository):ViewModel() {
 
 //    val jokes:LiveData<MyJoke>
 //    get() = jokesRepository.jokes
+    suspend fun updateJokes(): MyJoke? {
+        return jokesRepository.getJokes()
+    }
 
     suspend fun getJokes(): List<MyJoke>? {
        return jokesRepository.getJokesFromDB()

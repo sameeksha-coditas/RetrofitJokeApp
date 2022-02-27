@@ -51,19 +51,20 @@ class MainActivity : AppCompatActivity() {
 
         jokesArrayList = arrayListOf()
 
-        //lateinit var result: List<MyJoke>
+        lateinit var result: MyJoke
         CoroutineScope(Main).launch {
+            result= jokesViewModel.updateJokes()!!
             jokesArrayList = (jokesViewModel.getJokes() as ArrayList<MyJoke>?)!!
             Log.i("Main", jokesArrayList.toString())
 
             jokesArrayList.sortBy {
-                it.created_at
+                it.updated_at
             }
             val adapter = MyAdapter(jokesArrayList)
             recyclerview.adapter = adapter
-
-
         }
 
+
     }
+
 }
