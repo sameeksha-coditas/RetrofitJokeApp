@@ -12,10 +12,14 @@ class JokesViewModel(private val jokesRepository: JokesRepository):ViewModel() {
     init {
         viewModelScope.launch(Dispatchers.IO) {
 
-        jokesRepository.getJokes()
+       // jokesRepository.getJokes()
         }
     }
 
-    val jokes:LiveData<MyJoke>
-    get() = jokesRepository.jokes
+//    val jokes:LiveData<MyJoke>
+//    get() = jokesRepository.jokes
+
+    suspend fun getJokes(): List<MyJoke>? {
+       return jokesRepository.getJokesFromDB()
+   }
 }
