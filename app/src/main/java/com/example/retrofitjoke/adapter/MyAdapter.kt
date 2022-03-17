@@ -13,9 +13,9 @@ class MyAdapter(private val jokeList: ArrayList<MyJoke>) : RecyclerView.Adapter<
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)  {
-        val joke: TextView = itemView.findViewById(R.id.idTVJoke)
-        val jokeCreatedAt: TextView = itemView.findViewById(R.id.idTVCreatedAt)
-        val delete: ImageView = itemView.findViewById(R.id.idIVDelete)
+        val joke: TextView = itemView.findViewById(R.id.jokeText)
+        val jokeCreatedAt: TextView = itemView.findViewById(R.id.jokeCreated)
+       // val delete: ImageView = itemView.findViewById(R.id.idIVDelete)
 
     }
 
