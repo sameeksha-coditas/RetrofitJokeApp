@@ -1,11 +1,9 @@
 package com.example.retrofitjoke
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.retrofitjoke.adapter.MyAdapter
 import com.example.retrofitjoke.api.ApiInterface
@@ -18,15 +16,12 @@ import com.example.retrofitjoke.viewmodel.JokesViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var jokesViewModel: JokesViewModel
-    lateinit var jokesRepository: JokesRepository
-   lateinit var viewPager: ViewPager2
+    private lateinit var jokesRepository: JokesRepository
+   private lateinit var viewPager: ViewPager2
     private lateinit var jokesArrayList: ArrayList<MyJoke>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(this, JokesViewModelFactory(repository))[JokesViewModel::class.java]
         jokesArrayList = arrayListOf()
 
-        lateinit var result: MyJoke
+       lateinit var result: MyJoke
         CoroutineScope(Main).launch {
             result= jokesViewModel.updateJokes()!!
             jokesArrayList = (jokesViewModel.getJokes() as ArrayList<MyJoke>?)!!
